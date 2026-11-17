@@ -1,852 +1,1742 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta name="description" content="MYBHARATH - Data Analyst Portfolio. Explore projects in Python, SQL, Power BI and Excel.">
+
 <title>MYBHARATH | Data Analyst</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+
 <style>
+
+/* =========================
+   GLOBAL SETTINGS
+========================= */
+
 :root {
-  --bg: #090d0b;
-  --panel: #111713;
-  --green: #c5ff4a;
-  --white: #f3f5f0;
-  --muted: #89938a;
-  --border: #27332a;
+
+    --bg: #090d0b;
+    --panel: #111713;
+    --green: #c5ff4a;
+    --white: #f3f5f0;
+    --muted: #89938a;
+    --border: #27332a;
+
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: 'Space Grotesk', sans-serif;
-  overflow-x: hidden;
+
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+
 }
 
-a { color: inherit; text-decoration: none; }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
 .container {
-  width: min(1120px, 90%);
-  margin: auto;
+
+    width: min(1120px, 90%);
+    margin: auto;
+
 }
 
-/* NAVIGATION */
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(9,13,11,.92);
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--border);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(9,13,11,.92);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid var(--border);
+
 }
 
 .nav-inner {
-  height: 76px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+    height: 76px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
 }
 
 .logo {
-  font-size: 21px;
-  font-weight: 700;
-  letter-spacing: -1px;
+
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -1px;
+
 }
 
-.logo span { color: var(--green); }
+.logo span {
+    color: var(--green);
+}
 
 .nav-links {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-  font-size: 13px;
-  color: var(--muted);
+
+    display: flex;
+
+    gap: 28px;
+
+    align-items: center;
+
+    font-size: 13px;
+
+    color: var(--muted);
+
 }
 
-.nav-links a:hover { color: var(--green); }
+.nav-links a:hover {
+    color: var(--green);
+}
 
 .menu-btn {
-  display: none;
-  background: none;
-  color: white;
-  border: 1px solid var(--border);
-  padding: 8px 12px;
-  cursor: pointer;
+
+    display: none;
+
+    background: none;
+
+    color: white;
+
+    border: 1px solid var(--border);
+
+    padding: 8px 12px;
+
+    cursor: pointer;
+
 }
 
-/* HERO */
+
+/* =========================
+   HERO SECTION
+========================= */
 
 .hero {
-  min-height: 620px;
-  display: flex;
-  align-items: center;
-  padding: 100px 0;
-  position: relative;
+
+    min-height: 620px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 100px 0;
+
+    position: relative;
+
 }
 
 .hero::before {
-  content: "";
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  right: 5%;
-  top: 15%;
-  background: var(--green);
-  opacity: .07;
-  filter: blur(120px);
-  border-radius: 50%;
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    right: 5%;
+    top: 15%;
+
+    background: var(--green);
+
+    opacity: .07;
+
+    filter: blur(120px);
+
+    border-radius: 50%;
+
 }
 
 .tag {
-  color: var(--green);
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 2px;
-  margin-bottom: 28px;
+
+    color: var(--green);
+
+    font-family: 'DM Mono', monospace;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 28px;
+
 }
 
 .hero h1 {
-  font-size: clamp(48px, 8vw, 91px);
-  line-height: 1.03;
-  letter-spacing: -5px;
-  max-width: 850px;
+
+    font-size: clamp(48px, 8vw, 91px);
+
+    line-height: 1.03;
+
+    letter-spacing: -5px;
+
+    max-width: 850px;
+
 }
 
-.hero h1 span { color: var(--green); }
+.hero h1 span {
+    color: var(--green);
+}
 
 .hero-description {
-  color: var(--muted);
-  max-width: 590px;
-  line-height: 1.9;
-  font-size: 16px;
-  margin-top: 28px;
+
+    color: var(--muted);
+
+    max-width: 590px;
+
+    line-height: 1.9;
+
+    font-size: 16px;
+
+    margin-top: 28px;
+
 }
 
 .buttons {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin-top: 35px;
+
+    display: flex;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin-top: 35px;
+
 }
 
 .btn {
-  padding: 14px 23px;
-  border: 1px solid var(--green);
-  font-size: 13px;
-  font-weight: 600;
-  transition: .3s;
+
+    padding: 14px 23px;
+
+    border: 1px solid var(--green);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: .3s;
+
 }
 
 .btn-primary {
-  background: var(--green);
-  color: #10160b;
+
+    background: var(--green);
+
+    color: #10160b;
+
+}
+
+.btn-secondary {
+    color: var(--green);
 }
 
 .btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px #c5ff4a25;
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 25px #c5ff4a25;
+
 }
 
-.btn-secondary { color: var(--green); }
 
-/* COMMON SECTIONS */
+/* =========================
+   COMMON SECTIONS
+========================= */
 
-section { padding: 100px 0; }
+section {
+    padding: 100px 0;
+}
 
 .section-label {
-  color: var(--green);
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 2px;
-  margin-bottom: 17px;
+
+    color: var(--green);
+
+    font-family: 'DM Mono', monospace;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 17px;
+
 }
 
 .section-title {
-  font-size: clamp(32px, 5vw, 51px);
-  letter-spacing: -2px;
-  margin-bottom: 18px;
+
+    font-size: clamp(32px, 5vw, 51px);
+
+    letter-spacing: -2px;
+
+    margin-bottom: 18px;
+
 }
 
 .section-description {
-  color: var(--muted);
-  line-height: 1.8;
-  max-width: 650px;
+
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    max-width: 650px;
+
 }
 
-/* ABOUT */
+
+/* =========================
+   ABOUT SECTION
+========================= */
 
 .about-grid {
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 55px;
-  align-items: center;
+
+    display: grid;
+
+    grid-template-columns: 1.2fr .8fr;
+
+    gap: 55px;
+
+    align-items: center;
+
 }
 
 .about-text {
-  color: var(--muted);
-  line-height: 2;
-  margin-top: 20px;
+
+    color: var(--muted);
+
+    line-height: 2;
+
+    margin-top: 20px;
+
 }
 
 .about-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  padding: 30px;
+
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+
+    padding: 30px;
+
 }
 
 .about-card h3 {
-  color: var(--green);
-  margin-bottom: 20px;
+
+    color: var(--green);
+
+    margin-bottom: 20px;
+
 }
 
 .info-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid var(--border);
+
+    font-size: 13px;
+
 }
 
-.info-row span:first-child { color: var(--muted); }
+.info-row span:first-child {
+    color: var(--muted);
+}
 
-/* SKILLS */
+
+/* =========================
+   SKILLS SECTION
+========================= */
 
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 15px;
-  margin-top: 40px;
+
+    display: grid;
+
+    grid-template-columns: repeat(4,1fr);
+
+    gap: 15px;
+
+    margin-top: 40px;
+
 }
 
 .skill-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  padding: 25px;
-  transition: .3s;
+
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+
+    padding: 25px;
+
+    transition: .3s;
+
 }
 
 .skill-card:hover {
-  border-color: var(--green);
-  transform: translateY(-6px);
+
+    border-color: var(--green);
+
+    transform: translateY(-6px);
+
 }
 
 .skill-number {
-  color: var(--green);
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
+
+    color: var(--green);
+
+    font-family: 'DM Mono', monospace;
+
+    font-size: 12px;
+
 }
 
-.skill-card h3 { margin: 22px 0 12px; }
+.skill-card h3 {
+    margin: 22px 0 12px;
+}
 
 .skill-card p {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.7;
+
+    font-size: 13px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+
 }
 
-/* PROJECTS */
+
+/* =========================
+   PROJECTS SECTION
+========================= */
 
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 22px;
-  margin-top: 40px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+
+    margin-top: 40px;
+
 }
 
 .project-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  transition: .3s;
+
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+
+    overflow: hidden;
+
+    transition: .3s;
+
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--green);
+
+    transform: translateY(-6px);
+
+    border-color: var(--green);
+
 }
+
+
+/* PROJECT IMAGE CONTAINER */
 
 .project-visual {
-    height: 245px;
+
     width: 100%;
+
+    height: auto;
+
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    background: #101a14;
+
 }
 
-.project-visual img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transition: transform .35s ease;
-}
 
-.project-card:hover .project-visual img {
-  transform: scale(1.025);
-}
+/* IMAGE LINK */
 
 .project-image-link {
-  display: block;
-  width: 100%;
-  height: 100%;
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
 }
 
-.project-content { padding: 27px; }
 
-.project-content h3 { font-size: 21px; }
+/* ACTUAL DASHBOARD IMAGE */
+
+.project-visual img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-width: 100%;
+
+    object-fit: initial;
+
+    object-position: center;
+
+    transition: transform .35s ease;
+
+}
+
+
+/* IMAGE HOVER EFFECT */
+
+.project-card:hover .project-visual img {
+
+    transform: scale(1.015);
+
+}
+
+
+/* PROJECT CONTENT */
+
+.project-content {
+
+    padding: 27px;
+
+}
+
+.project-content h3 {
+
+    font-size: 21px;
+
+}
 
 .project-content p {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
-  margin: 15px 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    margin: 15px 0;
+
 }
 
+
+/* TECHNOLOGY TAGS */
+
 .tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 20px 0;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin: 20px 0;
+
 }
 
 .tech span {
-  border: 1px solid var(--border);
-  color: var(--green);
-  font-size: 11px;
-  padding: 6px 10px;
-  font-family: 'DM Mono', monospace;
+
+    border: 1px solid var(--border);
+
+    color: var(--green);
+
+    font-size: 11px;
+
+    padding: 6px 10px;
+
+    font-family: 'DM Mono', monospace;
+
 }
+
+
+/* PROJECT BUTTON */
 
 .project-link {
-  display: inline-block;
-  color: var(--green);
-  font-size: 13px;
-  font-weight: 600;
-  margin-top: 2px;
+
+    display: inline-block;
+
+    color: var(--green);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-top: 2px;
+
 }
 
-.project-link:hover { text-decoration: underline; }
-
-.contact-details {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px 24px;
-  margin: 0 0 28px;
-  color: var(--muted);
-  font-size: 14px;
+.project-link:hover {
+    text-decoration: underline;
 }
 
-.contact-details a { color: var(--white); }
-.contact-details a:hover { color: var(--green); }
 
-/* EDUCATION */
+/* =========================
+   EDUCATION SECTION
+========================= */
 
 .timeline {
-  border-left: 1px solid var(--green);
-  margin: 35px 0 0 10px;
-  padding-left: 30px;
+
+    border-left: 1px solid var(--green);
+
+    margin: 35px 0 0 10px;
+
+    padding-left: 30px;
+
 }
 
 .timeline-item {
-  position: relative;
-  padding-bottom: 35px;
+
+    position: relative;
+
+    padding-bottom: 35px;
+
 }
 
 .timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -36px;
-  top: 5px;
-  width: 10px;
-  height: 10px;
-  background: var(--green);
-  border-radius: 50%;
+
+    content: "";
+
+    position: absolute;
+
+    left: -36px;
+
+    top: 5px;
+
+    width: 10px;
+
+    height: 10px;
+
+    background: var(--green);
+
+    border-radius: 50%;
+
 }
 
-.timeline-item h3 { margin-bottom: 8px; }
+.timeline-item h3 {
+    margin-bottom: 8px;
+}
 
 .timeline-item p {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
 }
 
-/* CONTACT */
+
+/* =========================
+   CONTACT SECTION
+========================= */
 
 .contact-box {
-  border: 1px solid var(--border);
-  background: var(--panel);
-  padding: 55px;
-  text-align: center;
+
+    border: 1px solid var(--border);
+
+    background: var(--panel);
+
+    padding: 55px;
+
+    text-align: center;
+
 }
 
-.contact-box .section-title { margin-bottom: 15px; }
+.contact-box .section-title {
+    margin-bottom: 15px;
+}
 
 .contact-box p {
-  color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 25px;
+
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    margin-bottom: 25px;
+
 }
+
+.contact-details {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px 24px;
+
+    margin: 0 0 28px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+}
+
+.contact-details a {
+    color: var(--white);
+}
+
+.contact-details a:hover {
+    color: var(--green);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
-  border-top: 1px solid var(--border);
-  padding: 30px 0;
-  color: var(--muted);
-  font-size: 12px;
-  text-align: center;
+
+    border-top: 1px solid var(--border);
+
+    padding: 30px 0;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    text-align: center;
+
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
 
 @media(max-width: 768px) {
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 76px;
-    left: 0;
-    width: 100%;
-    background: var(--panel);
-    padding: 25px;
-    flex-direction: column;
-  }
 
-  .nav-links.active { display: flex; }
+    .nav-links {
 
-  .menu-btn { display: block; }
+        display: none;
 
-  .hero h1 { letter-spacing: -2px; }
+        position: absolute;
 
-  .about-grid,
-  .projects-grid { grid-template-columns: 1fr; }
+        top: 76px;
 
-  .skills-grid { grid-template-columns: repeat(2,1fr); }
+        left: 0;
 
-  .contact-box { padding: 30px 18px; }
-  .project-visual { height: 190px; min-height: 190px; }
+        width: 100%;
+
+        background: var(--panel);
+
+        padding: 25px;
+
+        flex-direction: column;
+
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .about-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .contact-box {
+        padding: 30px 18px;
+    }
+
+    /* Images retain their natural dimensions on mobile */
+
+    .project-visual,
+    .project-image-link {
+        height: auto;
+    }
+
+    .project-visual img {
+        width: 100%;
+        height: auto;
+    }
+
 }
+
 
 @media(max-width: 420px) {
-  .skills-grid { grid-template-columns: 1fr; }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
 }
+
+
+/* =========================
+   ACCESSIBILITY
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: .01ms !important;
+
+        transition-duration: .01ms !important;
+
+    }
+
 }
 
-/* REVEAL ANIMATION */
+
+/* =========================
+   REVEAL ANIMATION
+========================= */
 
 .reveal {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity .7s ease, transform .7s ease;
+
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition: opacity .7s ease, transform .7s ease;
+
 }
 
 .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+
+    opacity: 1;
+
+    transform: translateY(0);
+
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<nav>
-  <div class="container nav-inner">
-    <a href="#home" class="logo">MYBHARATH<span>.</span></a>
 
-    <div class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <div class="container nav-inner">
+
+        <a href="#home" class="logo">
+            MYBHARATH<span>.</span>
+        </a>
+
+
+        <div class="nav-links" id="navLinks">
+
+            <a href="#home">Home</a>
+
+            <a href="#about">About</a>
+
+            <a href="#skills">Skills</a>
+
+            <a href="#projects">Projects</a>
+
+            <a href="#education">Education</a>
+
+            <a href="#contact">Contact</a>
+
+        </div>
+
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            MENU ☰
+        </button>
+
     </div>
 
-    <button class="menu-btn" onclick="toggleMenu()">MENU ☰</button>
-  </div>
 </nav>
+
+
 
 <main>
 
-<!-- HOME -->
+
+<!-- =========================
+     HOME SECTION
+========================= -->
 
 <section class="hero container" id="home">
-  <div class="reveal">
-    <div class="tag">DATA ANALYST / PORTFOLIO 2026</div>
 
-    <h1>
-      Turning Data<br>
-      Into <span>Insights.</span>
-    </h1>
+    <div class="reveal">
 
-    <p class="hero-description">
-      Hi, I'm MYBHARATH. A passionate aspiring Data Analyst
-      who enjoys transforming raw data into meaningful insights
-      through Python, SQL, Power BI and Excel.
-    </p>
+        <div class="tag">
+            DATA ANALYST / PORTFOLIO 2026
+        </div>
 
-    <div class="buttons">
-      <a href="#projects" class="btn btn-primary">EXPLORE MY WORK ↗</a>
-      <a href="#contact" class="btn btn-secondary">LET'S CONNECT</a>
+
+        <h1>
+
+            Turning Data<br>
+
+            Into <span>Insights.</span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Hi, I'm MYBHARATH. A passionate aspiring Data Analyst
+            who enjoys transforming raw data into meaningful insights
+            through Python, SQL, Power BI and Excel.
+
+        </p>
+
+
+        <div class="buttons">
+
+            <a href="#projects" class="btn btn-primary">
+                EXPLORE MY WORK ↗
+            </a>
+
+            <a href="#contact" class="btn btn-secondary">
+                LET'S CONNECT
+            </a>
+
+        </div>
+
     </div>
-  </div>
+
 </section>
 
-<!-- ABOUT -->
+
+
+<!-- =========================
+     ABOUT SECTION
+========================= -->
 
 <section id="about">
-  <div class="container about-grid">
-    <div class="reveal">
-      <div class="section-label">01 / ABOUT ME</div>
-      <h2 class="section-title">Curious mind.<br>Analytical thinking.</h2>
 
-      <p class="about-text">
-        I'm an Engineering graduate from RVS Technical Campus,
-        Coimbatore, with an interest in Data Analytics.
+    <div class="container about-grid">
 
-        <br><br>
 
-        I have been developing my analytical skills using
-        Python, SQL, Power BI and Excel. I enjoy exploring
-        datasets, identifying patterns and presenting insights
-        through meaningful visualizations.
+        <div class="reveal">
 
-        <br><br>
+            <div class="section-label">
+                01 / ABOUT ME
+            </div>
 
-        My goal is to build a career in Data Analytics and
-        contribute to data-driven business decisions.
-      </p>
+
+            <h2 class="section-title">
+
+                Curious mind.<br>
+                Analytical thinking.
+
+            </h2>
+
+
+            <p class="about-text">
+
+                I'm an Engineering graduate from RVS Technical Campus,
+                Coimbatore, with an interest in Data Analytics.
+
+                <br><br>
+
+                I have been developing my analytical skills using
+                Python, SQL, Power BI and Excel. I enjoy exploring
+                datasets, identifying patterns and presenting insights
+                through meaningful visualizations.
+
+                <br><br>
+
+                My goal is to build a career in Data Analytics and
+                contribute to data-driven business decisions.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="about-card reveal">
+
+            <h3>QUICK PROFILE</h3>
+
+
+            <div class="info-row">
+
+                <span>Name</span>
+
+                <span>MYBHARATH</span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>Profession</span>
+
+                <span>Data Analyst</span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>Education</span>
+
+                <span>B.E. – CSE</span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>College</span>
+
+                <span>RVS Technical Campus</span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>Graduation</span>
+
+                <span>2025</span>
+
+            </div>
+
+        </div>
+
+
     </div>
 
-    <div class="about-card reveal">
-      <h3>QUICK PROFILE</h3>
-
-      <div class="info-row">
-        <span>Name</span>
-        <span>MYBHARATH</span>
-      </div>
-
-      <div class="info-row">
-        <span>Profession</span>
-        <span>Data Analyst</span>
-      </div>
-
-      <div class="info-row">
-        <span>Education</span>
-        <span>B.E. – CSE</span>
-      </div>
-
-      <div class="info-row">
-        <span>College</span>
-        <span>RVS Technical Campus</span>
-      </div>
-
-      <div class="info-row">
-        <span>Graduation</span>
-        <span>2025</span>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- SKILLS -->
+
+
+<!-- =========================
+     SKILLS SECTION
+========================= -->
 
 <section id="skills">
-  <div class="container">
-    <div class="section-label">02 / TECHNICAL EXPERTISE</div>
-    <h2 class="section-title">Tools I work with.</h2>
 
-    <p class="section-description">
-      My technical toolkit for data cleaning, analysis,
-      visualization and reporting.
-    </p>
+    <div class="container">
 
-    <div class="skills-grid">
 
-      <div class="skill-card reveal">
-        <div class="skill-number">01 / PYTHON</div>
-        <h3>Python</h3>
-        <p>Pandas, NumPy, Matplotlib, data cleaning and exploratory data analysis (EDA).</p>
-      </div>
+        <div class="section-label">
+            02 / TECHNICAL EXPERTISE
+        </div>
 
-      <div class="skill-card reveal">
-        <div class="skill-number">02 / DATABASE</div>
-        <h3>SQL</h3>
-        <p>SQL Server, MySQL, joins, aggregations, CTEs, window functions and queries.</p>
-      </div>
 
-      <div class="skill-card reveal">
-        <div class="skill-number">03 / BI</div>
-        <h3>Power BI</h3>
-        <p>DAX measures, Power Query, data modelling, KPI reporting and interactive dashboards.</p>
-      </div>
+        <h2 class="section-title">
+            Tools I work with.
+        </h2>
 
-      <div class="skill-card reveal">
-        <div class="skill-number">04 / SPREADSHEET</div>
-        <h3>Excel</h3>
-        <p>Advanced Excel, Pivot Tables, charts, lookups, data analysis and reporting.</p>
-      </div>
+
+        <p class="section-description">
+
+            My technical toolkit for data cleaning, analysis,
+            visualization and reporting.
+
+        </p>
+
+
+
+        <div class="skills-grid">
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-number">
+                    01 / PYTHON
+                </div>
+
+                <h3>Python</h3>
+
+                <p>
+
+                    Pandas, NumPy, Matplotlib, data cleaning
+                    and exploratory data analysis (EDA).
+
+                </p>
+
+            </div>
+
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-number">
+                    02 / DATABASE
+                </div>
+
+                <h3>SQL</h3>
+
+                <p>
+
+                    SQL Server, MySQL, joins, aggregations,
+                    CTEs, window functions and queries.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-number">
+                    03 / BI
+                </div>
+
+                <h3>Power BI</h3>
+
+                <p>
+
+                    DAX measures, Power Query, data modelling,
+                    KPI reporting and interactive dashboards.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-number">
+                    04 / SPREADSHEET
+                </div>
+
+                <h3>Excel</h3>
+
+                <p>
+
+                    Advanced Excel, Pivot Tables, charts,
+                    lookups, data analysis and reporting.
+
+                </p>
+
+            </div>
+
+
+        </div>
 
     </div>
-  </div>
+
 </section>
 
-<!-- PROJECTS -->
+
+
+<!-- =========================
+     PROJECTS SECTION
+========================= -->
 
 <section id="projects">
 
-  <div class="container">
+    <div class="container">
 
-    <div class="section-label">03 / SELECTED WORK</div>
 
-    <h2 class="section-title">Projects & explorations.</h2>
-
-    <p class="section-description">
-      A collection of analytical projects where I transform
-      raw datasets into meaningful business insights.
-    </p>
-
-    <div class="projects-grid">
-
-      <!-- PROJECT 01 : LOAN APPROVAL -->
-
-      <article class="project-card reveal">
-
-        <div class="project-visual">
-          <a class="project-image-link" href="loan-approval-dashboard.png" target="_blank" rel="noopener noreferrer" aria-label="Open Loan Approval dashboard screenshot">
-            <img src="loan-approval-dashboard.png" alt="Loan Approval Power BI dashboard screenshot" loading="lazy">
-          </a>
+        <div class="section-label">
+            03 / SELECTED WORK
         </div>
 
-        <div class="project-content">
 
-          <h3>Loan Approval EDA Dashboard</h3>
+        <h2 class="section-title">
+            Projects & explorations.
+        </h2>
 
-          <p>
-            Developed an interactive 4-page Power BI dashboard
-            analysing 101 loan applications to identify key
-            approval drivers and financial patterns.
-            Achieved a 67% approval rate and identified
-            Credit History as the strongest approval driver.
-          </p>
 
-          <div class="tech">
-            <span>POWER BI</span>
-            <span>DAX</span>
-            <span>POWER QUERY</span>
-            <span>PYTHON</span>
-            <span>PANDAS</span>
-          </div>
+        <p class="section-description">
 
-          <a class="project-link"
-             href="https://github.com/Mybharath18/EDA-Loan-Approval-Dashboard"
-             target="_blank" rel="noopener noreferrer">
-             VIEW PROJECT ↗
-          </a>
+            A collection of analytical projects where I transform
+            raw datasets into meaningful business insights.
+
+        </p>
+
+
+
+        <div class="projects-grid">
+
+
+
+            <!-- PROJECT 01 : LOAN APPROVAL -->
+
+
+            <article class="project-card reveal">
+
+
+                <div class="project-visual">
+
+                    <a
+                        class="project-image-link"
+                        href="loan-approval-dashboard.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open Loan Approval dashboard screenshot"
+                    >
+
+                        <img
+                            src="loan-approval-dashboard.png"
+                            alt="Loan Approval Power BI dashboard screenshot"
+                            loading="lazy"
+                        >
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="project-content">
+
+
+                    <h3>
+                        Loan Approval EDA Dashboard
+                    </h3>
+
+
+                    <p>
+
+                        Developed an interactive 4-page Power BI dashboard
+                        analysing 101 loan applications to identify key
+                        approval drivers and financial patterns.
+                        Achieved a 67% approval rate and identified
+                        Credit History as the strongest approval driver.
+
+                    </p>
+
+
+
+                    <div class="tech">
+
+                        <span>POWER BI</span>
+
+                        <span>DAX</span>
+
+                        <span>POWER QUERY</span>
+
+                        <span>PYTHON</span>
+
+                        <span>PANDAS</span>
+
+                    </div>
+
+
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/Mybharath18/EDA-Loan-Approval-Dashboard"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        VIEW PROJECT ↗
+
+                    </a>
+
+
+                </div>
+
+
+            </article>
+
+
+
+
+            <!-- PROJECT 02 : SALES ANALYSIS -->
+
+
+            <article class="project-card reveal">
+
+
+                <div class="project-visual">
+
+                    <a
+                        class="project-image-link"
+                        href="sales-analysis-dashboard.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open Sales Analysis dashboard screenshot"
+                    >
+
+                        <img
+                            src="sales-analysis-dashboard.png"
+                            alt="Sales Analysis Power BI dashboard screenshot"
+                            loading="lazy"
+                        >
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="project-content">
+
+
+                    <h3>
+                        Sales Analysis Dashboard
+                    </h3>
+
+
+                    <p>
+
+                        Developed a sales analytics dashboard using
+                        SQL Server and Power BI to analyse city-wise
+                        and product-wise sales trends. Performed data
+                        aggregation using SQL queries and created
+                        interactive visualizations for reporting.
+
+                    </p>
+
+
+
+                    <div class="tech">
+
+                        <span>SQL SERVER</span>
+
+                        <span>SQL</span>
+
+                        <span>POWER BI</span>
+
+                        <span>DATA AGGREGATION</span>
+
+                    </div>
+
+
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/Mybharath18/Sales-analysis"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        VIEW PROJECT ↗
+
+                    </a>
+
+
+                </div>
+
+
+            </article>
+
+
+
+
+            <!-- PROJECT 03 : E-COMMERCE -->
+
+
+            <article class="project-card reveal">
+
+
+                <div class="project-visual">
+
+                    <a
+                        class="project-image-link"
+                        href="ecommerce-sales-dashboard.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open E-commerce Sales dashboard screenshot"
+                    >
+
+                        <img
+                            src="ecommerce-sales-dashboard.png"
+                            alt="E-commerce Sales Excel dashboard screenshot"
+                            loading="lazy"
+                        >
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="project-content">
+
+
+                    <h3>
+                        E-commerce Sales Analysis Dashboard
+                    </h3>
+
+
+                    <p>
+
+                        Analysed 31,047 orders using Excel Pivot Tables.
+                        Identified that women accounted for 69.4% of
+                        purchases and evaluated monthly revenue,
+                        top-performing states and a 92.3% delivery
+                        success rate.
+
+                    </p>
+
+
+
+                    <div class="tech">
+
+                        <span>EXCEL</span>
+
+                        <span>PIVOT TABLES</span>
+
+                        <span>CHARTS</span>
+
+                        <span>DATA ANALYSIS</span>
+
+                    </div>
+
+
+
+                    <a
+                        class="project-link"
+                        href="ecommerce-sales-dashboard.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        VIEW DASHBOARD ↗
+
+                    </a>
+
+
+                </div>
+
+
+            </article>
+
+
 
         </div>
-
-      </article>
-
-
-      <!-- PROJECT 02 : SALES ANALYSIS -->
-
-      <article class="project-card reveal">
-
-        <div class="project-visual">
-          <a class="project-image-link" href="sales-analysis-dashboard.png" target="_blank" rel="noopener noreferrer" aria-label="Open Sales Analysis dashboard screenshot">
-            <img src="sales-analysis-dashboard.png" alt="Sales Analysis Power BI dashboard screenshot" loading="lazy">
-          </a>
-        </div>
-
-        <div class="project-content">
-
-          <h3>Sales Analysis Dashboard</h3>
-
-          <p>
-            Developed a sales analytics dashboard using
-            SQL Server and Power BI to analyse city-wise
-            and product-wise sales trends. Performed data
-            aggregation using SQL queries and created
-            interactive visualizations for reporting.
-          </p>
-
-          <div class="tech">
-            <span>SQL SERVER</span>
-            <span>SQL</span>
-            <span>POWER BI</span>
-            <span>DATA AGGREGATION</span>
-          </div>
-
-          <a class="project-link"
-             href="https://github.com/Mybharath18/Sales-analysis"
-             target="_blank" rel="noopener noreferrer">
-             VIEW PROJECT ↗
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <!-- PROJECT 03 : E-COMMERCE -->
-
-      <article class="project-card reveal">
-
-        <div class="project-visual">
-          <a class="project-image-link" href="ecommerce-sales-dashboard.png" target="_blank" rel="noopener noreferrer" aria-label="Open E-commerce Sales dashboard screenshot">
-            <img src="ecommerce-sales-dashboard.png" alt="E-commerce Sales Excel dashboard screenshot" loading="lazy">
-          </a>
-        </div>
-
-        <div class="project-content">
-
-          <h3>E-commerce Sales Analysis Dashboard</h3>
-
-          <p>
-            Analysed 31,047 orders using Excel Pivot Tables.
-            Identified that women accounted for 69.4% of
-            purchases and evaluated monthly revenue,
-            top-performing states and a 92.3% delivery
-            success rate.
-          </p>
-
-          <div class="tech">
-            <span>EXCEL</span>
-            <span>PIVOT TABLES</span>
-            <span>CHARTS</span>
-            <span>DATA ANALYSIS</span>
-          </div>
-
-          <a class="project-link"
-             href="ecommerce-sales-dashboard.png"
-             target="_blank" rel="noopener noreferrer">
-             VIEW DASHBOARD ↗
-          </a>
-
-        </div>
-
-      </article>
 
     </div>
 
-  </div>
-
 </section>
 
-<!-- EDUCATION -->
+
+
+
+<!-- =========================
+     EDUCATION SECTION
+========================= -->
 
 <section id="education">
-  <div class="container">
-    <div class="section-label">04 / EDUCATION</div>
-    <h2 class="section-title">My learning journey.</h2>
 
-    <div class="timeline">
+    <div class="container">
 
-      <div class="timeline-item reveal">
-        <h3>Bachelor of Engineering – Computer Science and Engineering</h3>
-        <p>RVS Technical Campus, Coimbatore</p>
-        <p>2025 | CGPA: 7.3/10.0</p>
-      </div>
 
-      <div class="timeline-item reveal">
-        <h3>Data Analytics Course Training</h3>
-        <p>AchieversIT Training Institute, Bangalore</p>
-        <p>January 2026 – April 2026</p>
-      </div>
+        <div class="section-label">
+            04 / EDUCATION
+        </div>
+
+
+        <h2 class="section-title">
+            My learning journey.
+        </h2>
+
+
+
+        <div class="timeline">
+
+
+            <div class="timeline-item reveal">
+
+                <h3>
+                    Bachelor of Engineering – Computer Science and Engineering
+                </h3>
+
+                <p>
+                    RVS Technical Campus, Coimbatore
+                </p>
+
+                <p>
+                    2025 | CGPA: 7.3/10.0
+                </p>
+
+            </div>
+
+
+
+            <div class="timeline-item reveal">
+
+                <h3>
+                    Data Analytics Course Training
+                </h3>
+
+                <p>
+                    AchieversIT Training Institute, Bangalore
+                </p>
+
+                <p>
+                    January 2026 – April 2026
+                </p>
+
+            </div>
+
+
+        </div>
 
     </div>
-  </div>
+
 </section>
 
-<!-- CONTACT -->
+
+
+
+<!-- =========================
+     CONTACT SECTION
+========================= -->
 
 <section id="contact">
-  <div class="container">
-    <div class="contact-box reveal">
 
-      <div class="section-label">05 / GET IN TOUCH</div>
+    <div class="container">
 
-      <h2 class="section-title">
-        Let's turn data<br>into something meaningful.
-      </h2>
 
-      <p>
-        I'm open to entry-level Data Analyst opportunities
-        and professional connections.
-      </p>
+        <div class="contact-box reveal">
 
-      <div class="contact-details">
-        <a href="mailto:kbharath5588@gmail.com">kbharath5588@gmail.com</a>
-        <a href="tel:+917558198318">+91 75581 98318</a>
-      </div>
 
-      <div class="buttons" style="justify-content:center">
-        <a href="https://github.com/Mybharath18"
-           target="_blank" rel="noopener noreferrer"
-           class="btn btn-primary">GITHUB ↗</a>
+            <div class="section-label">
+                05 / GET IN TOUCH
+            </div>
 
-        <a href="https://www.linkedin.com/in/mybharath-k-55133437b"
-           target="_blank" rel="noopener noreferrer"
-           class="btn btn-secondary">LINKEDIN ↗</a>
 
-        <a href="mailto:kbharath5588@gmail.com"
-           class="btn btn-secondary">EMAIL ME ↗</a>
-      </div>
+
+            <h2 class="section-title">
+
+                Let's turn data<br>
+                into something meaningful.
+
+            </h2>
+
+
+
+            <p>
+
+                I'm open to entry-level Data Analyst opportunities
+                and professional connections.
+
+            </p>
+
+
+
+            <div class="contact-details">
+
+                <a href="mailto:kbharath5588@gmail.com">
+
+                    kbharath5588@gmail.com
+
+                </a>
+
+
+                <a href="tel:+917558198318">
+
+                    +91 75581 98318
+
+                </a>
+
+            </div>
+
+
+
+
+            <div class="buttons" style="justify-content:center">
+
+
+                <a
+                    href="https://github.com/Mybharath18"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary"
+                >
+
+                    GITHUB ↗
+
+                </a>
+
+
+
+                <a
+                    href="https://www.linkedin.com/in/mybharath-k-55133437b"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-secondary"
+                >
+
+                    LINKEDIN ↗
+
+                </a>
+
+
+
+                <a
+                    href="mailto:kbharath5588@gmail.com"
+                    class="btn btn-secondary"
+                >
+
+                    EMAIL ME ↗
+
+                </a>
+
+
+            </div>
+
+
+        </div>
 
     </div>
-  </div>
+
 </section>
+
 
 </main>
 
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-  <div class="container">
-    © MYBHARATH. Built with curiosity, analysis and data.
-  </div>
+
+    <div class="container">
+
+        © MYBHARATH. Built with curiosity, analysis and data.
+
+    </div>
+
 </footer>
 
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
+
+
+/* MOBILE MENU */
+
 function toggleMenu() {
-  document.getElementById("navLinks").classList.toggle("active");
+
+    document
+        .getElementById("navLinks")
+        .classList
+        .toggle("active");
+
 }
 
+
+/* CLOSE MOBILE MENU */
+
 document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    document.getElementById("navLinks").classList.remove("active");
-  });
+
+    link.addEventListener("click", () => {
+
+        document
+            .getElementById("navLinks")
+            .classList
+            .remove("active");
+
+    });
+
 });
+
+
+
+/* SCROLL REVEAL ANIMATION */
 
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
+        }
+
+    });
+
+}, {
+
+    threshold: 0.12
+
+});
+
 
 document.querySelectorAll(".reveal").forEach(element => {
-  observer.observe(element);
+
+    observer.observe(element);
+
 });
+
+
 </script>
 
+
 </body>
+
 </html>
