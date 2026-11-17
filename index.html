@@ -275,20 +275,32 @@ section { padding: 100px 0; }
 }
 
 .project-visual {
-  min-height: 180px;
-  background: #18231b;
+  height: 230px;
+  min-height: 230px;
+  background: #0d120f;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 12px;
-  color: var(--green);
-  font-family: 'DM Mono', monospace;
-  font-size: 13px;
-  letter-spacing: 2px;
+  overflow: hidden;
 }
 
-.project-visual .visual-icon { font-size: 42px; }
+.project-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform .35s ease;
+}
+
+.project-card:hover .project-visual img {
+  transform: scale(1.025);
+}
+
+.project-image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
 .project-content { padding: 27px; }
 
@@ -317,10 +329,27 @@ section { padding: 100px 0; }
 }
 
 .project-link {
+  display: inline-block;
   color: var(--green);
   font-size: 13px;
   font-weight: 600;
+  margin-top: 2px;
 }
+
+.project-link:hover { text-decoration: underline; }
+
+.contact-details {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin: 0 0 28px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.contact-details a { color: var(--white); }
+.contact-details a:hover { color: var(--green); }
 
 /* EDUCATION */
 
@@ -405,10 +434,19 @@ footer {
   .skills-grid { grid-template-columns: repeat(2,1fr); }
 
   .contact-box { padding: 30px 18px; }
+  .project-visual { height: 190px; min-height: 190px; }
 }
 
 @media(max-width: 420px) {
   .skills-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
 }
 
 /* REVEAL ANIMATION */
@@ -546,25 +584,25 @@ footer {
       <div class="skill-card reveal">
         <div class="skill-number">01 / PYTHON</div>
         <h3>Python</h3>
-        <p>Pandas, NumPy, Matplotlib, Data Cleaning and EDA.</p>
+        <p>Pandas, NumPy, Matplotlib, data cleaning and exploratory data analysis (EDA).</p>
       </div>
 
       <div class="skill-card reveal">
         <div class="skill-number">02 / DATABASE</div>
         <h3>SQL</h3>
-        <p>SQL Server, MySQL, Joins, Queries and Data Analysis.</p>
+        <p>SQL Server, MySQL, joins, aggregations, CTEs, window functions and queries.</p>
       </div>
 
       <div class="skill-card reveal">
         <div class="skill-number">03 / BI</div>
         <h3>Power BI</h3>
-        <p>DAX, Power Query, KPI Cards and Interactive Dashboards.</p>
+        <p>DAX measures, Power Query, data modelling, KPI reporting and interactive dashboards.</p>
       </div>
 
       <div class="skill-card reveal">
         <div class="skill-number">04 / SPREADSHEET</div>
         <h3>Excel</h3>
-        <p>Advanced Excel, Pivot Tables, Charts and Reporting.</p>
+        <p>Advanced Excel, Pivot Tables, charts, lookups, data analysis and reporting.</p>
       </div>
 
     </div>
@@ -593,8 +631,9 @@ footer {
       <article class="project-card reveal">
 
         <div class="project-visual">
-          <div class="visual-icon">◫</div>
-          POWER BI / 01
+          <a class="project-image-link" href="loan-approval-dashboard.png" target="_blank" rel="noopener noreferrer" aria-label="Open Loan Approval dashboard screenshot">
+            <img src="loan-approval-dashboard.png" alt="Loan Approval Power BI dashboard screenshot" loading="lazy">
+          </a>
         </div>
 
         <div class="project-content">
@@ -633,8 +672,9 @@ footer {
       <article class="project-card reveal">
 
         <div class="project-visual">
-          <div class="visual-icon">▥</div>
-          SQL + POWER BI / 02
+          <a class="project-image-link" href="sales-analysis-dashboard.png" target="_blank" rel="noopener noreferrer" aria-label="Open Sales Analysis dashboard screenshot">
+            <img src="sales-analysis-dashboard.png" alt="Sales Analysis Power BI dashboard screenshot" loading="lazy">
+          </a>
         </div>
 
         <div class="project-content">
@@ -672,8 +712,9 @@ footer {
       <article class="project-card reveal">
 
         <div class="project-visual">
-          <div class="visual-icon">▤</div>
-          EXCEL / 03
+          <a class="project-image-link" href="ecommerce-sales-dashboard.png" target="_blank" rel="noopener noreferrer" aria-label="Open E-commerce Sales dashboard screenshot">
+            <img src="ecommerce-sales-dashboard.png" alt="E-commerce Sales Excel dashboard screenshot" loading="lazy">
+          </a>
         </div>
 
         <div class="project-content">
@@ -696,8 +737,9 @@ footer {
           </div>
 
           <a class="project-link"
-             href="mailto:kbharath5588@gmail.com?subject=E-commerce%20Sales%20Analysis%20Project">
-             PROJECT ENQUIRY ↗
+             href="ecommerce-sales-dashboard.png"
+             target="_blank" rel="noopener noreferrer">
+             VIEW DASHBOARD ↗
           </a>
 
         </div>
@@ -722,13 +764,13 @@ footer {
       <div class="timeline-item reveal">
         <h3>Bachelor of Engineering – Computer Science and Engineering</h3>
         <p>RVS Technical Campus, Coimbatore</p>
-        <p>2025</p>
+        <p>2025 | CGPA: 7.3/10.0</p>
       </div>
 
       <div class="timeline-item reveal">
-        <h3>Data Analytics Learning</h3>
-        <p>Developing practical skills in Python, SQL,
-           Power BI and Advanced Excel.</p>
+        <h3>Data Analytics Course Training</h3>
+        <p>AchieversIT Training Institute, Bangalore</p>
+        <p>January 2026 – April 2026</p>
       </div>
 
     </div>
@@ -752,14 +794,22 @@ footer {
         and professional connections.
       </p>
 
+      <div class="contact-details">
+        <a href="mailto:kbharath5588@gmail.com">kbharath5588@gmail.com</a>
+        <a href="tel:+917558198318">+91 75581 98318</a>
+      </div>
+
       <div class="buttons" style="justify-content:center">
         <a href="https://github.com/Mybharath18"
            target="_blank" rel="noopener noreferrer"
            class="btn btn-primary">GITHUB ↗</a>
 
-        <a href="https://www.linkedin.com/"
+        <a href="https://www.linkedin.com/in/mybharath-k-55133437b"
            target="_blank" rel="noopener noreferrer"
            class="btn btn-secondary">LINKEDIN ↗</a>
+
+        <a href="mailto:kbharath5588@gmail.com"
+           class="btn btn-secondary">EMAIL ME ↗</a>
       </div>
 
     </div>
@@ -770,7 +820,7 @@ footer {
 
 <footer>
   <div class="container">
-    © 2026 MYBHARATH. Designed with curiosity & data.
+    © MYBHARATH. Built with curiosity, analysis and data.
   </div>
 </footer>
 
