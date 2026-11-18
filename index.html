@@ -1,1191 +1,1667 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta name="description" content="MYBHARATH - Data Analyst Portfolio. Explore projects in Python, SQL, Power BI and Excel.">
+
 <title>MYBHARATH | Data Analyst</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+
 <style>
+
+/* ==============================
+   GLOBAL SETTINGS
+============================== */
+
 :root {
-  --bg: #090d0b;
-  --panel: #111713;
-  --green: #c5ff4a;
-  --white: #f3f5f0;
-  --muted: #89938a;
-  --border: #27332a;
+    --bg: #090d0b;
+    --panel: #111713;
+    --green: #c5ff4a;
+    --white: #f3f5f0;
+    --muted: #89938a;
+    --border: #27332a;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 85px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
 }
 
 body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: 'Space Grotesk', sans-serif;
-  overflow-x: hidden;
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 .container {
-  width: min(1120px, 90%);
-  margin: auto;
+    width: min(1120px, 90%);
+    margin: auto;
 }
 
-/* NAVIGATION */
+
+/* ==============================
+   NAVIGATION
+============================== */
 
 nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(9,13,11,.92);
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(9,13,11,.94);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid var(--border);
 }
 
 .nav-inner {
-  height: 76px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    height: 76px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-  font-size: 21px;
-  font-weight: 700;
-  letter-spacing: -1px;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -1px;
 }
 
 .logo span {
-  color: var(--green);
+    color: var(--green);
 }
 
 .nav-links {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-  font-size: 13px;
-  color: var(--muted);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    font-size: 13px;
 }
+
+/* All navigation options remain neutral by default */
 
 .nav-links a {
-  position: relative;
-  transition: color .3s ease;
+    position: relative;
+
+    color: var(--muted);
+
+    padding: 10px 8px;
+
+    border: 1px solid transparent;
+
+    transition: color .25s ease,
+                border-color .25s ease,
+                background .25s ease;
 }
 
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -7px;
-  width: 0;
-  height: 2px;
-  background: var(--green);
-  transition: width .3s ease;
-}
+/* Only the currently hovered option changes */
 
 .nav-links a:hover,
 .nav-links a:focus-visible {
-  color: var(--green);
+    color: var(--green);
+    border-color: var(--green);
+    background: transparent;
+    outline: none;
 }
 
-.nav-links a:hover::after,
-.nav-links a:focus-visible::after {
-  width: 100%;
-}
+/* Mobile menu button */
 
 .menu-btn {
-  display: none;
-  background: none;
-  color: white;
-  border: 1px solid var(--border);
-  padding: 8px 12px;
-  cursor: pointer;
+    display: none;
+
+    background: transparent;
+    color: var(--white);
+
+    border: 1px solid var(--border);
+
+    padding: 8px 12px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 13px;
 }
 
-/* HERO */
+.menu-btn:hover {
+    color: var(--green);
+    border-color: var(--green);
+}
+
+
+/* ==============================
+   HERO SECTION
+============================== */
 
 .hero {
-  min-height: 620px;
-  display: flex;
-  align-items: center;
-  padding: 100px 0;
-  position: relative;
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 100px 0;
+
+    position: relative;
 }
 
 .hero::before {
-  content: "";
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  right: 5%;
-  top: 15%;
-  background: var(--green);
-  opacity: .07;
-  filter: blur(120px);
-  border-radius: 50%;
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    right: 5%;
+    top: 15%;
+
+    background: var(--green);
+
+    opacity: .07;
+
+    filter: blur(120px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
 }
 
 .tag {
-  color: var(--green);
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 2px;
-  margin-bottom: 28px;
+    color: var(--green);
+
+    font-family: 'DM Mono', monospace;
+
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    margin-bottom: 28px;
 }
 
 .hero h1 {
-  font-size: clamp(48px, 8vw, 91px);
-  line-height: 1.03;
-  letter-spacing: -5px;
-  max-width: 850px;
+    font-size: clamp(48px, 8vw, 91px);
+
+    line-height: 1.03;
+    letter-spacing: -5px;
+
+    max-width: 850px;
 }
 
 .hero h1 span {
-  color: var(--green);
+    color: var(--green);
 }
 
 .hero-description {
-  color: var(--muted);
-  max-width: 590px;
-  line-height: 1.9;
-  font-size: 16px;
-  margin-top: 28px;
+    color: var(--muted);
+
+    max-width: 590px;
+
+    line-height: 1.9;
+    font-size: 16px;
+
+    margin-top: 28px;
 }
 
-/* BUTTONS */
+
+/* ==============================
+   BUTTONS
+============================== */
+
+/* All buttons are transparent initially */
 
 .buttons {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin-top: 35px;
+    display: flex;
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin-top: 35px;
 }
 
-.btn {
-  display: inline-block;
-  padding: 14px 23px;
-  border: 1px solid var(--green);
-  font-size: 13px;
-  font-weight: 600;
-  transition: all .3s ease;
-}
-
-.btn-primary {
-  background: var(--green);
-  color: #10160b;
-}
-
+.btn,
+.btn-primary,
 .btn-secondary {
-  color: var(--green);
+    display: inline-block;
+
+    padding: 14px 23px;
+
+    background: transparent;
+
+    color: var(--green);
+
+    border: 1px solid var(--green);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    font-family: inherit;
+
+    transition: all .25s ease;
 }
+
+/* Only the button under the cursor becomes green */
 
 .btn:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
 .btn:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px #c5ff4a35;
+    background: var(--green);
+
+    color: #10160b;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 25px #c5ff4a25;
+
+    outline: none;
 }
 
-.btn-primary:hover {
-  background: transparent;
-  color: var(--green);
-}
 
-.btn-secondary:hover {
-  background: var(--green);
-  color: #10160b;
-}
-
-/* COMMON SECTIONS */
+/* ==============================
+   COMMON SECTIONS
+============================== */
 
 section {
-  padding: 100px 0;
+    padding: 100px 0;
 }
 
 .section-label {
-  color: var(--green);
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 2px;
-  margin-bottom: 17px;
+    color: var(--green);
+
+    font-family: 'DM Mono', monospace;
+
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    margin-bottom: 17px;
 }
 
 .section-title {
-  font-size: clamp(32px, 5vw, 51px);
-  letter-spacing: -2px;
-  margin-bottom: 18px;
+    font-size: clamp(32px, 5vw, 51px);
+
+    letter-spacing: -2px;
+
+    margin-bottom: 18px;
 }
 
 .section-description {
-  color: var(--muted);
-  line-height: 1.8;
-  max-width: 650px;
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    max-width: 650px;
 }
 
-/* ABOUT */
+
+/* ==============================
+   ABOUT SECTION
+============================== */
 
 .about-grid {
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 55px;
-  align-items: center;
+    display: grid;
+
+    grid-template-columns: 1.2fr .8fr;
+
+    gap: 55px;
+
+    align-items: center;
 }
 
 .about-text {
-  color: var(--muted);
-  line-height: 2;
-  margin-top: 20px;
+    color: var(--muted);
+
+    line-height: 2;
+
+    margin-top: 20px;
 }
 
 .about-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  padding: 30px;
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+
+    padding: 30px;
 }
 
 .about-card h3 {
-  color: var(--green);
-  margin-bottom: 20px;
+    color: var(--green);
+
+    margin-bottom: 20px;
 }
 
 .info-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid var(--border);
+
+    font-size: 13px;
 }
 
 .info-row span:first-child {
-  color: var(--muted);
+    color: var(--muted);
 }
 
-/* SKILLS */
+
+/* ==============================
+   SKILLS SECTION
+============================== */
 
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 15px;
-  margin-top: 40px;
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-top: 40px;
 }
 
 .skill-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  padding: 25px;
-  transition: .3s;
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+
+    padding: 25px;
+
+    transition: .3s;
 }
 
 .skill-card:hover {
-  border-color: var(--green);
-  transform: translateY(-6px);
+    border-color: var(--green);
+
+    transform: translateY(-6px);
 }
 
 .skill-number {
-  color: var(--green);
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
+    color: var(--green);
+
+    font-family: 'DM Mono', monospace;
+
+    font-size: 12px;
 }
 
 .skill-card h3 {
-  margin: 22px 0 12px;
+    margin: 22px 0 12px;
 }
 
 .skill-card p {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.7;
+    font-size: 13px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
 }
 
-/* PROJECTS */
+
+/* ==============================
+   PROJECTS SECTION
+============================== */
 
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 22px;
-  margin-top: 40px;
-  align-items: stretch;
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+
+    margin-top: 40px;
+
+    align-items: stretch;
 }
 
+/* All project cards have consistent structure */
+
 .project-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  transition: .3s;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+    display: flex;
+
+    flex-direction: column;
+
+    height: 100%;
+
+    min-width: 0;
+
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+
+    overflow: hidden;
+
+    transition: border-color .3s ease,
+                transform .3s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--green);
+    transform: translateY(-6px);
+
+    border-color: var(--green);
 }
 
-/* CONSISTENT PROJECT IMAGE AREA */
+
+/* ==============================
+   PROJECT IMAGES
+============================== */
+
+/*
+   All dashboard images use the same
+   5:3 image display area.
+
+   This prevents different image heights
+   and inconsistent project layouts.
+*/
 
 .project-visual {
-  width: 100%;
-  height: 245px;
-  min-height: 245px;
-  background: #0d120f;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+    width: 100%;
+
+    aspect-ratio: 5 / 3;
+
+    height: auto;
+
+    min-height: 0;
+
+    background: #0d120f;
+
+    overflow: hidden;
+
+    display: block;
 }
 
 .project-image-link {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+    display: block;
+
+    width: 100%;
+    height: 100%;
 }
 
 .project-visual img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  transition: transform .35s ease;
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    /*
+       Cover fills the complete image area.
+       The image is not stretched.
+    */
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition: transform .35s ease;
 }
+
+/* Image zoom only on the hovered project */
 
 .project-card:hover .project-visual img {
-  transform: scale(1.025);
+    transform: scale(1.02);
 }
 
-/* PROJECT CONTENT */
+
+/* ==============================
+   PROJECT CONTENT
+============================== */
 
 .project-content {
-  padding: 27px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+    padding: 27px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
 }
 
 .project-content h3 {
-  font-size: 21px;
-  line-height: 1.4;
+    font-size: 21px;
+
+    line-height: 1.4;
 }
 
 .project-content p {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
-  margin: 15px 0;
-  flex: 1;
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    margin: 15px 0;
+
+    flex: 1;
 }
 
+
+/* ==============================
+   PROJECT TECHNOLOGY TAGS
+============================== */
+
 .tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 20px 0;
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin: 20px 0;
 }
 
 .tech span {
-  border: 1px solid var(--border);
-  color: var(--green);
-  font-size: 11px;
-  padding: 6px 10px;
-  font-family: 'DM Mono', monospace;
+    border: 1px solid var(--border);
+
+    color: var(--green);
+
+    font-size: 11px;
+
+    padding: 6px 10px;
+
+    font-family: 'DM Mono', monospace;
 }
 
+
+/* ==============================
+   PROJECT LINKS
+============================== */
+
 .project-link {
-  display: inline-block;
-  align-self: flex-start;
-  color: var(--green);
-  font-size: 13px;
-  font-weight: 600;
-  margin-top: 2px;
-  transition: .3s;
+    display: inline-block;
+
+    align-self: flex-start;
+
+    color: var(--green);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-top: 2px;
+
+    transition: color .25s ease;
 }
 
 .project-link:hover {
-  text-decoration: underline;
+    color: var(--white);
+
+    text-decoration: underline;
 }
 
-/* EDUCATION */
+
+/* ==============================
+   EDUCATION SECTION
+============================== */
 
 .timeline {
-  border-left: 1px solid var(--green);
-  margin: 35px 0 0 10px;
-  padding-left: 30px;
+    border-left: 1px solid var(--green);
+
+    margin: 35px 0 0 10px;
+
+    padding-left: 30px;
 }
 
 .timeline-item {
-  position: relative;
-  padding-bottom: 35px;
+    position: relative;
+
+    padding-bottom: 35px;
 }
 
 .timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -36px;
-  top: 5px;
-  width: 10px;
-  height: 10px;
-  background: var(--green);
-  border-radius: 50%;
+    content: "";
+
+    position: absolute;
+
+    left: -36px;
+    top: 5px;
+
+    width: 10px;
+    height: 10px;
+
+    background: var(--green);
+
+    border-radius: 50%;
 }
 
 .timeline-item h3 {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .timeline-item p {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.8;
 }
 
-/* CONTACT */
+
+/* ==============================
+   CONTACT SECTION
+============================== */
 
 .contact-box {
-  border: 1px solid var(--border);
-  background: var(--panel);
-  padding: 55px;
-  text-align: center;
+    border: 1px solid var(--border);
+
+    background: var(--panel);
+
+    padding: 55px;
+
+    text-align: center;
 }
 
 .contact-box .section-title {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .contact-box p {
-  color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 25px;
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    margin-bottom: 25px;
 }
 
 .contact-details {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px 24px;
-  margin: 0 0 28px;
-  color: var(--muted);
-  font-size: 14px;
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px 24px;
+
+    margin: 0 0 28px;
+
+    color: var(--muted);
+
+    font-size: 14px;
 }
 
 .contact-details a {
-  color: var(--white);
+    color: var(--white);
+
+    transition: color .25s ease;
 }
 
 .contact-details a:hover {
-  color: var(--green);
+    color: var(--green);
 }
 
-/* FOOTER */
+
+/* ==============================
+   FOOTER
+============================== */
 
 footer {
-  border-top: 1px solid var(--border);
-  padding: 30px 0;
-  color: var(--muted);
-  font-size: 12px;
-  text-align: center;
+    border-top: 1px solid var(--border);
+
+    padding: 30px 0;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    text-align: center;
 }
 
-/* MOBILE RESPONSIVENESS */
+
+/* ==============================
+   MOBILE RESPONSIVE
+============================== */
 
 @media(max-width: 768px) {
 
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 76px;
-    left: 0;
-    width: 100%;
-    background: var(--panel);
-    padding: 25px;
-    flex-direction: column;
-    border-bottom: 1px solid var(--border);
-  }
+    .nav-links {
+        display: none;
 
-  .nav-links.active {
-    display: flex;
-  }
+        position: absolute;
 
-  .menu-btn {
-    display: block;
-  }
+        top: 76px;
+        left: 0;
 
-  .hero h1 {
-    letter-spacing: -2px;
-  }
+        width: 100%;
 
-  .about-grid,
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
+        background: var(--panel);
 
-  .skills-grid {
-    grid-template-columns: repeat(2,1fr);
-  }
+        padding: 25px;
 
-  .contact-box {
-    padding: 30px 18px;
-  }
+        flex-direction: column;
 
-  .project-visual {
-    height: 210px;
-    min-height: 210px;
-  }
+        align-items: stretch;
+
+        gap: 8px;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        text-align: center;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .hero {
+        min-height: 550px;
+
+        padding: 80px 0;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-box {
+        padding: 30px 18px;
+    }
+
+    .project-visual {
+        aspect-ratio: 5 / 3;
+    }
 }
+
+
+/* ==============================
+   SMALL MOBILE SCREENS
+============================== */
 
 @media(max-width: 420px) {
 
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
 
-  .project-visual {
-    height: 190px;
-    min-height: 190px;
-  }
+    .hero h1 {
+        font-size: 46px;
 
-  .project-content {
-    padding: 22px;
-  }
+        letter-spacing: -2px;
+    }
+
+    .project-content {
+        padding: 20px;
+    }
+
+    .project-content h3 {
+        font-size: 19px;
+    }
+
+    .buttons {
+        gap: 10px;
+    }
+
+    .btn,
+    .btn-primary,
+    .btn-secondary {
+        padding: 12px 16px;
+
+        font-size: 12px;
+    }
+
 }
 
-/* REDUCED MOTION */
+
+/* ==============================
+   ACCESSIBILITY
+============================== */
 
 @media (prefers-reduced-motion: reduce) {
 
-  html {
-    scroll-behavior: auto;
-  }
+    html {
+        scroll-behavior: auto;
+    }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+
+        transition-duration: .01ms !important;
+    }
+
 }
 
-/* REVEAL ANIMATION */
+
+/* ==============================
+   REVEAL ANIMATION
+============================== */
 
 .reveal {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity .7s ease, transform .7s ease;
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition: opacity .7s ease,
+                transform .7s ease;
 }
 
 .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .reveal {
+        opacity: 1;
+
+        transform: none;
+    }
+
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<!-- NAVIGATION -->
+
+<!-- ==============================
+     NAVIGATION
+============================== -->
 
 <nav>
-  <div class="container nav-inner">
 
-    <a href="#home" class="logo">
-      MYBHARATH<span>.</span>
-    </a>
+    <div class="container nav-inner">
 
-    <div class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
+        <a href="#home" class="logo">
+            MYBHARATH<span>.</span>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+
+            <a href="#home">Home</a>
+
+            <a href="#about">About</a>
+
+            <a href="#skills">Skills</a>
+
+            <a href="#projects">Projects</a>
+
+            <a href="#education">Education</a>
+
+            <a href="#contact">Contact</a>
+
+        </div>
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            onclick="toggleMenu()">
+
+            MENU ☰
+
+        </button>
+
     </div>
 
-    <button class="menu-btn" onclick="toggleMenu()" aria-label="Toggle navigation menu">
-      MENU ☰
-    </button>
-
-  </div>
 </nav>
+
 
 <main>
 
-<!-- HOME -->
+
+<!-- ==============================
+     HOME
+============================== -->
 
 <section class="hero container" id="home">
 
-  <div class="reveal">
+    <div class="reveal">
 
-    <div class="tag">
-      DATA ANALYST / PORTFOLIO 2026
+        <div class="tag">
+            DATA ANALYST / PORTFOLIO 2026
+        </div>
+
+        <h1>
+            Turning Data<br>
+            Into <span>Insights.</span>
+        </h1>
+
+        <p class="hero-description">
+
+            Hi, I'm MYBHARATH. A passionate aspiring Data Analyst
+            who enjoys transforming raw data into meaningful insights
+            through Python, SQL, Power BI and Excel.
+
+        </p>
+
+        <div class="buttons">
+
+            <a href="#projects" class="btn btn-primary">
+                EXPLORE MY WORK ↗
+            </a>
+
+            <a href="#contact" class="btn btn-secondary">
+                LET'S CONNECT
+            </a>
+
+        </div>
+
     </div>
-
-    <h1>
-      Turning Data<br>
-      Into <span>Insights.</span>
-    </h1>
-
-    <p class="hero-description">
-      Hi, I'm MYBHARATH. A passionate aspiring Data Analyst
-      who enjoys transforming raw data into meaningful insights
-      through Python, SQL, Power BI and Excel.
-    </p>
-
-    <div class="buttons">
-
-      <a href="#projects" class="btn btn-primary">
-        EXPLORE MY WORK ↗
-      </a>
-
-      <a href="#contact" class="btn btn-secondary">
-        LET'S CONNECT
-      </a>
-
-    </div>
-
-  </div>
 
 </section>
 
-<!-- ABOUT -->
+
+<!-- ==============================
+     ABOUT
+============================== -->
 
 <section id="about">
 
-  <div class="container about-grid">
+    <div class="container about-grid">
 
-    <div class="reveal">
+        <div class="reveal">
 
-      <div class="section-label">
-        01 / ABOUT ME
-      </div>
+            <div class="section-label">
+                01 / ABOUT ME
+            </div>
 
-      <h2 class="section-title">
-        Curious mind.<br>
-        Analytical thinking.
-      </h2>
+            <h2 class="section-title">
+                Curious mind.<br>
+                Analytical thinking.
+            </h2>
 
-      <p class="about-text">
+            <p class="about-text">
 
-        I'm an Engineering graduate from RVS Technical Campus,
-        Coimbatore, with an interest in Data Analytics.
+                I'm an Engineering graduate from RVS Technical Campus,
+                Coimbatore, with an interest in Data Analytics.
 
-        <br><br>
+                <br><br>
 
-        I have been developing my analytical skills using
-        Python, SQL, Power BI and Excel. I enjoy exploring
-        datasets, identifying patterns and presenting insights
-        through meaningful visualizations.
+                I have been developing my analytical skills using
+                Python, SQL, Power BI and Excel. I enjoy exploring
+                datasets, identifying patterns and presenting insights
+                through meaningful visualizations.
 
-        <br><br>
+                <br><br>
 
-        My goal is to build a career in Data Analytics and
-        contribute to data-driven business decisions.
+                My goal is to build a career in Data Analytics and
+                contribute to data-driven business decisions.
 
-      </p>
+            </p>
+
+        </div>
+
+
+        <div class="about-card reveal">
+
+            <h3>QUICK PROFILE</h3>
+
+            <div class="info-row">
+
+                <span>Name</span>
+                <span>MYBHARATH</span>
+
+            </div>
+
+            <div class="info-row">
+
+                <span>Profession</span>
+                <span>Data Analyst</span>
+
+            </div>
+
+            <div class="info-row">
+
+                <span>Education</span>
+                <span>B.E. – CSE</span>
+
+            </div>
+
+            <div class="info-row">
+
+                <span>College</span>
+                <span>RVS Technical Campus</span>
+
+            </div>
+
+            <div class="info-row">
+
+                <span>Graduation</span>
+                <span>2025</span>
+
+            </div>
+
+        </div>
 
     </div>
-
-    <div class="about-card reveal">
-
-      <h3>QUICK PROFILE</h3>
-
-      <div class="info-row">
-        <span>Name</span>
-        <span>MYBHARATH</span>
-      </div>
-
-      <div class="info-row">
-        <span>Profession</span>
-        <span>Data Analyst</span>
-      </div>
-
-      <div class="info-row">
-        <span>Education</span>
-        <span>B.E. – CSE</span>
-      </div>
-
-      <div class="info-row">
-        <span>College</span>
-        <span>RVS Technical Campus</span>
-      </div>
-
-      <div class="info-row">
-        <span>Graduation</span>
-        <span>2025</span>
-      </div>
-
-    </div>
-
-  </div>
 
 </section>
 
-<!-- SKILLS -->
+
+<!-- ==============================
+     SKILLS
+============================== -->
 
 <section id="skills">
 
-  <div class="container">
+    <div class="container">
 
-    <div class="section-label">
-      02 / TECHNICAL EXPERTISE
+        <div class="section-label">
+            02 / TECHNICAL EXPERTISE
+        </div>
+
+        <h2 class="section-title">
+            Tools I work with.
+        </h2>
+
+        <p class="section-description">
+
+            My technical toolkit for data cleaning, analysis,
+            visualization and reporting.
+
+        </p>
+
+
+        <div class="skills-grid">
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-number">
+                    01 / PYTHON
+                </div>
+
+                <h3>Python</h3>
+
+                <p>
+                    Pandas, NumPy, Matplotlib, data cleaning
+                    and exploratory data analysis (EDA).
+                </p>
+
+            </div>
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-number">
+                    02 / DATABASE
+                </div>
+
+                <h3>SQL</h3>
+
+                <p>
+                    SQL Server, MySQL, joins, aggregations,
+                    CTEs, window functions and queries.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-number">
+                    03 / BI
+                </div>
+
+                <h3>Power BI</h3>
+
+                <p>
+                    DAX measures, Power Query, data modelling,
+                    KPI reporting and interactive dashboards.
+                </p>
+
+            </div>
+
+
+            <div class="skill-card reveal">
+
+                <div class="skill-number">
+                    04 / SPREADSHEET
+                </div>
+
+                <h3>Excel</h3>
+
+                <p>
+                    Advanced Excel, Pivot Tables, charts,
+                    lookups, data analysis and reporting.
+                </p>
+
+            </div>
+
+
+        </div>
+
     </div>
-
-    <h2 class="section-title">
-      Tools I work with.
-    </h2>
-
-    <p class="section-description">
-      My technical toolkit for data cleaning, analysis,
-      visualization and reporting.
-    </p>
-
-    <div class="skills-grid">
-
-      <div class="skill-card reveal">
-
-        <div class="skill-number">
-          01 / PYTHON
-        </div>
-
-        <h3>Python</h3>
-
-        <p>
-          Pandas, NumPy, Matplotlib, data cleaning and exploratory data analysis (EDA).
-        </p>
-
-      </div>
-
-      <div class="skill-card reveal">
-
-        <div class="skill-number">
-          02 / DATABASE
-        </div>
-
-        <h3>SQL</h3>
-
-        <p>
-          SQL Server, MySQL, joins, aggregations, CTEs, window functions and queries.
-        </p>
-
-      </div>
-
-      <div class="skill-card reveal">
-
-        <div class="skill-number">
-          03 / BI
-        </div>
-
-        <h3>Power BI</h3>
-
-        <p>
-          DAX measures, Power Query, data modelling, KPI reporting and interactive dashboards.
-        </p>
-
-      </div>
-
-      <div class="skill-card reveal">
-
-        <div class="skill-number">
-          04 / SPREADSHEET
-        </div>
-
-        <h3>Excel</h3>
-
-        <p>
-          Advanced Excel, Pivot Tables, charts, lookups, data analysis and reporting.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
 
 </section>
 
-<!-- PROJECTS -->
+
+<!-- ==============================
+     PROJECTS
+============================== -->
 
 <section id="projects">
 
-  <div class="container">
+    <div class="container">
 
-    <div class="section-label">
-      03 / SELECTED WORK
+        <div class="section-label">
+            03 / SELECTED WORK
+        </div>
+
+        <h2 class="section-title">
+            Projects & explorations.
+        </h2>
+
+        <p class="section-description">
+
+            A collection of analytical projects where I transform
+            raw datasets into meaningful business insights.
+
+        </p>
+
+
+        <div class="projects-grid">
+
+
+            <!-- PROJECT 01 : LOAN APPROVAL -->
+
+            <article class="project-card reveal">
+
+                <div class="project-visual">
+
+                    <a
+                        class="project-image-link"
+                        href="loan-approval-dashboard.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open Loan Approval dashboard screenshot">
+
+                        <img
+                            src="loan-approval-dashboard.png"
+                            alt="Loan Approval Power BI dashboard screenshot"
+                            loading="lazy">
+
+                    </a>
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <h3>
+                        Loan Approval EDA Dashboard
+                    </h3>
+
+                    <p>
+
+                        Developed an interactive 4-page Power BI dashboard
+                        analysing 101 loan applications to identify key
+                        approval drivers and financial patterns.
+                        Achieved a 67% approval rate and identified
+                        Credit History as the strongest approval driver.
+
+                    </p>
+
+
+                    <div class="tech">
+
+                        <span>POWER BI</span>
+
+                        <span>DAX</span>
+
+                        <span>POWER QUERY</span>
+
+                        <span>PYTHON</span>
+
+                        <span>PANDAS</span>
+
+                    </div>
+
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/Mybharath18/EDA-Loan-Approval-Dashboard"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        VIEW PROJECT ↗
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 02 : SALES ANALYSIS -->
+
+            <article class="project-card reveal">
+
+                <div class="project-visual">
+
+                    <a
+                        class="project-image-link"
+                        href="sales-analysis-dashboard.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open Sales Analysis dashboard screenshot">
+
+                        <img
+                            src="sales-analysis-dashboard.png"
+                            alt="Sales Analysis Power BI dashboard screenshot"
+                            loading="lazy">
+
+                    </a>
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <h3>
+                        Sales Analysis Dashboard
+                    </h3>
+
+                    <p>
+
+                        Developed a sales analytics dashboard using
+                        SQL Server and Power BI to analyse city-wise
+                        and product-wise sales trends. Performed data
+                        aggregation using SQL queries and created
+                        interactive visualizations for reporting.
+
+                    </p>
+
+
+                    <div class="tech">
+
+                        <span>SQL SERVER</span>
+
+                        <span>SQL</span>
+
+                        <span>POWER BI</span>
+
+                        <span>DATA AGGREGATION</span>
+
+                    </div>
+
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/Mybharath18/Sales-analysis"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        VIEW PROJECT ↗
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 03 : E-COMMERCE -->
+
+            <article class="project-card reveal">
+
+                <div class="project-visual">
+
+                    <a
+                        class="project-image-link"
+                        href="ecommerce-sales-dashboard.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open E-commerce Sales dashboard screenshot">
+
+                        <img
+                            src="ecommerce-sales-dashboard.png"
+                            alt="E-commerce Sales Excel dashboard screenshot"
+                            loading="lazy">
+
+                    </a>
+
+                </div>
+
+
+                <div class="project-content">
+
+                    <h3>
+                        E-commerce Sales Analysis Dashboard
+                    </h3>
+
+                    <p>
+
+                        Analysed 31,047 orders using Excel Pivot Tables.
+                        Identified that women accounted for 69.4% of
+                        purchases and evaluated monthly revenue,
+                        top-performing states and a 92.3% delivery
+                        success rate.
+
+                    </p>
+
+
+                    <div class="tech">
+
+                        <span>EXCEL</span>
+
+                        <span>PIVOT TABLES</span>
+
+                        <span>CHARTS</span>
+
+                        <span>DATA ANALYSIS</span>
+
+                    </div>
+
+
+                    <a
+                        class="project-link"
+                        href="ecommerce-sales-dashboard.png"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        VIEW DASHBOARD ↗
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
     </div>
-
-    <h2 class="section-title">
-      Projects & explorations.
-    </h2>
-
-    <p class="section-description">
-      A collection of analytical projects where I transform
-      raw datasets into meaningful business insights.
-    </p>
-
-    <div class="projects-grid">
-
-      <!-- PROJECT 01 : LOAN APPROVAL -->
-
-      <article class="project-card reveal">
-
-        <div class="project-visual">
-
-          <a class="project-image-link"
-             href="loan-approval-dashboard.png"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="Open Loan Approval dashboard screenshot">
-
-            <img
-              src="loan-approval-dashboard.png"
-              alt="Loan Approval Power BI dashboard screenshot"
-              loading="lazy">
-
-          </a>
-
-        </div>
-
-        <div class="project-content">
-
-          <h3>
-            Loan Approval EDA Dashboard
-          </h3>
-
-          <p>
-            Developed an interactive 4-page Power BI dashboard
-            analysing 101 loan applications to identify key
-            approval drivers and financial patterns.
-            Achieved a 67% approval rate and identified
-            Credit History as the strongest approval driver.
-          </p>
-
-          <div class="tech">
-            <span>POWER BI</span>
-            <span>DAX</span>
-            <span>POWER QUERY</span>
-            <span>PYTHON</span>
-            <span>PANDAS</span>
-          </div>
-
-          <a class="project-link"
-             href="https://github.com/Mybharath18/EDA-Loan-Approval-Dashboard"
-             target="_blank"
-             rel="noopener noreferrer">
-
-            VIEW PROJECT ↗
-
-          </a>
-
-        </div>
-
-      </article>
-
-      <!-- PROJECT 02 : SALES ANALYSIS -->
-
-      <article class="project-card reveal">
-
-        <div class="project-visual">
-
-          <a class="project-image-link"
-             href="sales-analysis-dashboard.png"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="Open Sales Analysis dashboard screenshot">
-
-            <img
-              src="sales-analysis-dashboard.png"
-              alt="Sales Analysis Power BI dashboard screenshot"
-              loading="lazy">
-
-          </a>
-
-        </div>
-
-        <div class="project-content">
-
-          <h3>
-            Sales Analysis Dashboard
-          </h3>
-
-          <p>
-            Developed a sales analytics dashboard using
-            SQL Server and Power BI to analyse city-wise
-            and product-wise sales trends. Performed data
-            aggregation using SQL queries and created
-            interactive visualizations for reporting.
-          </p>
-
-          <div class="tech">
-            <span>SQL SERVER</span>
-            <span>SQL</span>
-            <span>POWER BI</span>
-            <span>DATA AGGREGATION</span>
-          </div>
-
-          <a class="project-link"
-             href="https://github.com/Mybharath18/Sales-analysis"
-             target="_blank"
-             rel="noopener noreferrer">
-
-            VIEW PROJECT ↗
-
-          </a>
-
-        </div>
-
-      </article>
-
-      <!-- PROJECT 03 : E-COMMERCE -->
-
-      <article class="project-card reveal">
-
-        <div class="project-visual">
-
-          <a class="project-image-link"
-             href="ecommerce-sales-dashboard.png"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="Open E-commerce Sales dashboard screenshot">
-
-            <img
-              src="ecommerce-sales-dashboard.png"
-              alt="E-commerce Sales Excel dashboard screenshot"
-              loading="lazy">
-
-          </a>
-
-        </div>
-
-        <div class="project-content">
-
-          <h3>
-            E-commerce Sales Analysis Dashboard
-          </h3>
-
-          <p>
-            Analysed 31,047 orders using Excel Pivot Tables.
-            Identified that women accounted for 69.4% of
-            purchases and evaluated monthly revenue,
-            top-performing states and a 92.3% delivery
-            success rate.
-          </p>
-
-          <div class="tech">
-            <span>EXCEL</span>
-            <span>PIVOT TABLES</span>
-            <span>CHARTS</span>
-            <span>DATA ANALYSIS</span>
-          </div>
-
-          <a class="project-link"
-             href="ecommerce-sales-dashboard.png"
-             target="_blank"
-             rel="noopener noreferrer">
-
-            VIEW DASHBOARD ↗
-
-          </a>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
 
 </section>
 
-<!-- EDUCATION -->
+
+<!-- ==============================
+     EDUCATION
+============================== -->
 
 <section id="education">
 
-  <div class="container">
+    <div class="container">
 
-    <div class="section-label">
-      04 / EDUCATION
+        <div class="section-label">
+            04 / EDUCATION
+        </div>
+
+        <h2 class="section-title">
+            My learning journey.
+        </h2>
+
+
+        <div class="timeline">
+
+
+            <div class="timeline-item reveal">
+
+                <h3>
+                    Bachelor of Engineering – Computer Science and Engineering
+                </h3>
+
+                <p>
+                    RVS Technical Campus, Coimbatore
+                </p>
+
+                <p>
+                    2025 | CGPA: 7.3/10.0
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <h3>
+                    Data Analytics Course Training
+                </h3>
+
+                <p>
+                    AchieversIT Training Institute, Bangalore
+                </p>
+
+                <p>
+                    January 2026 – April 2026
+                </p>
+
+            </div>
+
+
+        </div>
+
     </div>
-
-    <h2 class="section-title">
-      My learning journey.
-    </h2>
-
-    <div class="timeline">
-
-      <div class="timeline-item reveal">
-
-        <h3>
-          Bachelor of Engineering – Computer Science and Engineering
-        </h3>
-
-        <p>
-          RVS Technical Campus, Coimbatore
-        </p>
-
-        <p>
-          2025 | CGPA: 7.3/10.0
-        </p>
-
-      </div>
-
-      <div class="timeline-item reveal">
-
-        <h3>
-          Data Analytics Course Training
-        </h3>
-
-        <p>
-          AchieversIT Training Institute, Bangalore
-        </p>
-
-        <p>
-          January 2026 – April 2026
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
 
 </section>
 
-<!-- CONTACT -->
+
+<!-- ==============================
+     CONTACT
+============================== -->
 
 <section id="contact">
 
-  <div class="container">
+    <div class="container">
 
-    <div class="contact-box reveal">
+        <div class="contact-box reveal">
 
-      <div class="section-label">
-        05 / GET IN TOUCH
-      </div>
+            <div class="section-label">
+                05 / GET IN TOUCH
+            </div>
 
-      <h2 class="section-title">
-        Let's turn data<br>
-        into something meaningful.
-      </h2>
 
-      <p>
-        I'm open to entry-level Data Analyst opportunities
-        and professional connections.
-      </p>
+            <h2 class="section-title">
 
-      <div class="contact-details">
+                Let's turn data<br>
+                into something meaningful.
 
-        <a href="mailto:kbharath5588@gmail.com">
-          kbharath5588@gmail.com
-        </a>
+            </h2>
 
-        <a href="tel:+917558198318">
-          +91 75581 98318
-        </a>
 
-      </div>
+            <p>
 
-      <div class="buttons" style="justify-content:center">
+                I'm open to entry-level Data Analyst opportunities
+                and professional connections.
 
-        <a href="https://github.com/Mybharath18"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="btn btn-primary">
+            </p>
 
-          GITHUB ↗
 
-        </a>
+            <div class="contact-details">
 
-        <a href="https://www.linkedin.com/in/mybharath-k-55133437b"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="btn btn-secondary">
+                <a href="mailto:kbharath5588@gmail.com">
+                    kbharath5588@gmail.com
+                </a>
 
-          LINKEDIN ↗
+                <a href="tel:+917558198318">
+                    +91 75581 98318
+                </a>
 
-        </a>
+            </div>
 
-        <a href="mailto:kbharath5588@gmail.com"
-           class="btn btn-secondary">
 
-          EMAIL ME ↗
+            <div class="buttons" style="justify-content:center">
 
-        </a>
 
-      </div>
+                <a
+                    href="https://github.com/Mybharath18"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn">
+
+                    GITHUB ↗
+
+                </a>
+
+
+                <a
+                    href="https://www.linkedin.com/in/mybharath-k-55133437b"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn">
+
+                    LINKEDIN ↗
+
+                </a>
+
+
+                <a
+                    href="mailto:kbharath5588@gmail.com"
+                    class="btn">
+
+                    EMAIL ME ↗
+
+                </a>
+
+
+            </div>
+
+        </div>
 
     </div>
 
-  </div>
-
 </section>
+
 
 </main>
 
-<!-- FOOTER -->
+
+<!-- ==============================
+     FOOTER
+============================== -->
 
 <footer>
 
-  <div class="container">
-    © MYBHARATH. Built with curiosity, analysis and data.
-  </div>
+    <div class="container">
+
+        © MYBHARATH. Built with curiosity, analysis and data.
+
+    </div>
 
 </footer>
 
-<!-- JAVASCRIPT -->
+
+
+<!-- ==============================
+     JAVASCRIPT
+============================== -->
 
 <script>
 
+/* MOBILE NAVIGATION */
+
 function toggleMenu() {
-  document.getElementById("navLinks").classList.toggle("active");
+
+    const navLinks = document.getElementById("navLinks");
+
+    const menuBtn = document.getElementById("menuBtn");
+
+    navLinks.classList.toggle("active");
+
+    const isOpen = navLinks.classList.contains("active");
+
+    menuBtn.setAttribute("aria-expanded", isOpen);
+
 }
+
+
+/* CLOSE MOBILE MENU AFTER CLICKING A LINK */
 
 document.querySelectorAll(".nav-links a").forEach(link => {
 
-  link.addEventListener("click", () => {
-    document.getElementById("navLinks").classList.remove("active");
-  });
+    link.addEventListener("click", () => {
+
+        document.getElementById("navLinks").classList.remove("active");
+
+        document.getElementById("menuBtn").setAttribute("aria-expanded", "false");
+
+    });
 
 });
 
-const observer = new IntersectionObserver(entries => {
 
-  entries.forEach(entry => {
+/* SCROLL REVEAL ANIMATION */
 
-    if (entry.isIntersecting) {
+const revealElements = document.querySelectorAll(".reveal");
 
-      entry.target.classList.add("visible");
+if ("IntersectionObserver" in window) {
 
-      observer.unobserve(entry.target);
+    const observer = new IntersectionObserver(entries => {
 
-    }
+        entries.forEach(entry => {
 
-  });
+            if (entry.isIntersecting) {
 
-}, { threshold: 0.12 });
+                entry.target.classList.add("visible");
 
-document.querySelectorAll(".reveal").forEach(element => {
-  observer.observe(element);
-});
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    }, {
+        threshold: 0.12
+    });
+
+
+    revealElements.forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+} else {
+
+    revealElements.forEach(element => {
+
+        element.classList.add("visible");
+
+    });
+
+}
 
 </script>
+
 
 </body>
 </html>
